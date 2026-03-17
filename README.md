@@ -24,6 +24,7 @@ fullstack-quality-gate-template/
 ├── .editorconfig
 ├── .gitignore
 ├── .nvmrc
+├── CONTRIBUTING.md
 ├── docker-compose.yml
 ├── fullstack-quality-gate-template.sln
 ├── global.json
@@ -154,3 +155,9 @@ The GitHub Actions workflow (`.github/workflows/ci.yml`) runs on every push and 
 | web | `npm ci` → `lint` → `build` → `test:coverage` |
 
 Coverage reports are uploaded as workflow artifacts after each run.
+
+---
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for branching conventions, local pre-PR checks, and pull request expectations.
