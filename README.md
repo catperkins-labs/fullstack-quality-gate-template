@@ -23,7 +23,10 @@ A scaffolded fullstack project demonstrating engineering maturity: .NET 8 Minima
 fullstack-quality-gate-template/
 ├── .editorconfig
 ├── .gitignore
+├── .nvmrc
 ├── docker-compose.yml
+├── fullstack-quality-gate-template.sln
+├── global.json
 ├── README.md
 ├── .github/
 │   └── workflows/
@@ -59,8 +62,8 @@ fullstack-quality-gate-template/
 
 | Tool | Verify | Required for |
 | ---- | ------ | ------------ |
-| [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) | `dotnet --version` | API (manual path) |
-| [Node.js 20+](https://nodejs.org/) | `node --version` | Frontend (manual path) |
+| [.NET 8 SDK (global.json pins .NET for dotnet CLI users)](https://dotnet.microsoft.com/download/dotnet/8.0) | `dotnet --version` | API (manual path) |
+| [Node.js 20 (see .nvmrc)](https://nodejs.org/) | `node --version` | Frontend (manual path) |
 | [Docker Desktop](https://www.docker.com/products/docker-desktop/) | `docker --version` | Fast path |
 
 ---
