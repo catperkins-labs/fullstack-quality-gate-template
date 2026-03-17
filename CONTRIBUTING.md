@@ -51,8 +51,10 @@ When all `feat/` branches for an epic have been merged into the `epic/` branch:
 
    ```bash
    git fetch origin
-   git rebase origin/main
+   git merge origin/main
    ```
+
+    > Note: Because `epic/` branches are typically shared, prefer `git merge` over `git rebase` here to avoid rewriting history and force-pushes that can disrupt collaborators and PR review links.
 
 2. **Run the full CI pipeline locally:**
 
@@ -87,7 +89,7 @@ Complete the following before marking a pull request as ready for review:
    task ci
    ```
 
-   If Task is not installed, run the equivalent commands manually:
+   If Task is not installed, run the equivalent commands manually (including coverage):
 
    ```bash
    # Lint
@@ -97,9 +99,11 @@ Complete the following before marking a pull request as ready for review:
    dotnet build api/Api/Api.csproj --configuration Release
    cd web && npm run build
 
-   # Test
-   dotnet test api/Api.Tests/Api.Tests.csproj
-   cd web && npm run test
+   # Test (API - Release configuration with coverage)
+   dotnet test api/Api.Tests/Api.Tests.csproj --configuration Release --collect:"XPlat Code Coverage"
+
+   # Test (web - with coverage)
+   cd web && npm run test:coverage
    ```
 
 3. **No debug code or commented-out code** is included in the diff.
@@ -111,6 +115,8 @@ Complete the following before marking a pull request as ready for review:
 ## Pull Request Expectations
 
 - One issue per pull request. If the scope grows, open a follow-up issue and PR.
+ - For issue-level branches (`feat/`, `fix/`, `docs/`, `chore/` tied to an issue), keep **one issue per pull request**. If the scope grows, open a follow-up issue and PR.
+ - Final `epic/` → `main` pull requests are an explicit exception: they should summarise the completed work and may close multiple child issues, listing each issue they close in the description.
 - The PR title must follow [Conventional Commits](https://www.conventionalcommits.org/) format:
 
   | Prefix | Use for |
