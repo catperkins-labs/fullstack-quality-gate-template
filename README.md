@@ -1,0 +1,1 @@
+# fullstack-quality-gate-template
