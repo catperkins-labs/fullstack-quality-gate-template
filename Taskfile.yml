@@ -48,9 +48,10 @@ tasks:
       - npm run test:coverage
 
   lint:
-    desc: Lints frontend
+    desc: Check formatting and lint frontend
     dir: web
     cmds:
+      - npm run format:check
       - npm run lint
 
   ci:
