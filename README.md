@@ -117,7 +117,7 @@ Run tests with coverage:
 
 ```bash
 cd api/Api.Tests
-dotnet test
+dotnet test --configuration Release --collect "XPlat Code Coverage"
 ```
 
 #### Frontend

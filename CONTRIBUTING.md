@@ -115,8 +115,8 @@ Complete the following before marking a pull request as ready for review:
 ## Pull Request Expectations
 
 - One issue per pull request. If the scope grows, open a follow-up issue and PR.
- - For issue-level branches (`feat/`, `fix/`, `docs/`, `chore/` tied to an issue), keep **one issue per pull request**. If the scope grows, open a follow-up issue and PR.
- - Final `epic/` → `main` pull requests are an explicit exception: they should summarise the completed work and may close multiple child issues, listing each issue they close in the description.
+- For issue-level branches (`feat/`, `fix/`, `docs/`, `chore/` tied to an issue), keep **one issue per pull request**. If the scope grows, open a follow-up issue and PR.
+- Final `epic/` → `main` pull requests are an explicit exception: they should summarise the completed work and may close multiple child issues, listing each issue they close in the description.
 - The PR title must follow [Conventional Commits](https://www.conventionalcommits.org/) format:
 
   | Prefix | Use for |
