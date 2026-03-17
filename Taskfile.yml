@@ -1,0 +1,66 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+
+version: '3'
+
+tasks:
+  dev:
+    desc: Start API + frontend dev servers in parallel
+    deps: [dev:api, dev:web]
+
+  dev:api:
+    desc: Start API dev server
+    dir: api
+    cmds:
+      - dotnet run --project Api/Api.csproj
+
+  dev:web:
+    desc: Start frontend dev server
+    dir: web
+    cmds:
+      -  npm run dev
+
+  build:
+    desc: Builds API + frontend (parallel)
+    deps: [build:api, build:web]
+
+  build:api:
+    dir: api
+    cmds:
+      - dotnet build Api/Api.csproj --configuration Release
+
+  build:web:
+    dir: web
+    cmds:
+      - npm run build
+
+  test:
+    desc: Runs API + frontend tests (parallel)
+    deps: [test:api, test:web]
+
+  test:api:
+    dir: api
+    cmds:
+      - dotnet test Api.Tests/Api.Tests.csproj
+
+  test:web:
+    dir: web
+    cmds:
+      - npm run test
+
+  lint:
+    desc: Lints frontend
+    dir: web
+    cmds:
+      - npm run lint
+
+  ci:
+    desc: "Sequential: lint -> build -> test (matches CI pipeline order)"
+    cmds:
+      - task: lint
+      - task: build
+      - task: test
+
+  docker:
+    desc: Spins up API + frontend via Docker Compose
+    cmds:
+      - docker compose up --build

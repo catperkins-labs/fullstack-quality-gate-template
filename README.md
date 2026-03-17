@@ -28,6 +28,7 @@ fullstack-quality-gate-template/
 ├── fullstack-quality-gate-template.sln
 ├── global.json
 ├── README.md
+├── Taskfile.yml
 ├── .github/
 │   └── workflows/
 │       └── ci.yml
@@ -65,6 +66,7 @@ fullstack-quality-gate-template/
 | [.NET 8 SDK (global.json pins exact SDK version 8.0.404; install that version or update global.json)](https://dotnet.microsoft.com/download/dotnet/8.0) | `dotnet --version` | API (manual path) |
 | [Node.js 20 (see .nvmrc)](https://nodejs.org/) | `node --version` | Frontend (manual path) |
 | [Docker Desktop](https://www.docker.com/products/docker-desktop/) | `docker --version` | Fast path |
+| [Task](https://taskfile.dev/installation/) (go-task) | `task --version` | Task commands *(optional)* |
 
 ---
 
@@ -82,6 +84,21 @@ docker compose up --build
 | ------- | --- | ----------------- |
 | API | http://localhost:5000/health | `{"status":"healthy"}` |
 | Web | http://localhost:3000 | React app |
+
+---
+
+### Task commands *(optional)*
+
+If you have [Task](https://taskfile.dev/installation/) installed, you can run everything from the repo root:
+
+| Command | Description |
+| ------- | ----------- |
+| `task dev` | Start API + frontend dev servers in parallel |
+| `task build` | Build API + frontend |
+| `task test` | Run all tests |
+| `task lint` | Lint frontend |
+| `task ci` | Full pipeline: lint → build → test |
+| `task docker` | `docker compose up --build` |
 
 ---
 
