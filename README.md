@@ -23,8 +23,13 @@ A scaffolded fullstack project demonstrating engineering maturity: .NET 8 Minima
 fullstack-quality-gate-template/
 ├── .editorconfig
 ├── .gitignore
+├── .nvmrc
+├── CONTRIBUTING.md
 ├── docker-compose.yml
+├── fullstack-quality-gate-template.sln
+├── global.json
 ├── README.md
+├── Taskfile.yml
 ├── .github/
 │   └── workflows/
 │       └── ci.yml
@@ -53,15 +58,54 @@ fullstack-quality-gate-template/
 
 ---
 
-## Local Development
+## Quickstart
 
 ### Prerequisites
 
-- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- [Node.js 20+](https://nodejs.org/)
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) *(optional)*
+| Tool | Verify | Required for |
+| ---- | ------ | ------------ |
+| [.NET 8 SDK (SDK version is pinned in global.json; install that version or update global.json)](https://dotnet.microsoft.com/download/dotnet/8.0) | `dotnet --version` | API (manual path) |
+| [Node.js 20 (see .nvmrc)](https://nodejs.org/) | `node --version` | Frontend (manual path) |
+| [Docker Desktop](https://www.docker.com/products/docker-desktop/) | `docker --version` | Fast path |
+| [Task](https://taskfile.dev/installation/) (go-task) | `task --version` | Task commands *(optional)* |
 
-### API
+---
+
+### Fast path — Docker Compose *(recommended)*
+
+Spins up both services with a single command. No SDK or Node installation required.
+
+```bash
+git clone https://github.com/catperkins-labs/fullstack-quality-gate-template.git
+cd fullstack-quality-gate-template
+docker compose up --build
+```
+
+| Service | URL | Expected response |
+| ------- | --- | ----------------- |
+| API | http://localhost:5000/health | `{"status":"healthy"}` |
+| Web | http://localhost:3000 | React app |
+
+---
+
+### Task commands *(optional)*
+
+If you have [Task](https://taskfile.dev/installation/) installed, you can run everything from the repo root:
+
+| Command | Description |
+| ------- | ----------- |
+| `task dev` | Start API + frontend dev servers in parallel |
+| `task build` | Build API + frontend |
+| `task test` | Run all tests |
+| `task lint` | Lint frontend |
+| `task ci` | Full pipeline: lint → build → test |
+| `task docker` | `docker compose up --build` |
+
+---
+
+### Manual path — per service
+
+#### API
 
 ```bash
 cd api
@@ -69,14 +113,16 @@ dotnet run --project Api
 # → http://localhost:5000/health
 ```
 
-Run tests:
+Run tests with coverage:
 
 ```bash
-cd api
-dotnet test
+cd api/Api.Tests
+dotnet test --configuration Release --collect "XPlat Code Coverage"
 ```
 
-### Frontend
+#### Frontend
+
+Install dependencies and start the dev server:
 
 ```bash
 cd web
@@ -97,14 +143,6 @@ Lint:
 npm run lint
 ```
 
-### Docker Compose (all-in-one)
-
-```bash
-docker-compose up --build
-# API  → http://localhost:5000/health
-# Web  → http://localhost:3000
-```
-
 ---
 
 ## CI
@@ -117,3 +155,9 @@ The GitHub Actions workflow (`.github/workflows/ci.yml`) runs on every push and 
 | web | `npm ci` → `lint` → `build` → `test:coverage` |
 
 Coverage reports are uploaded as workflow artifacts after each run.
+
+---
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for branching conventions, local pre-PR checks, and pull request expectations.
