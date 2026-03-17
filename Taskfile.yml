@@ -17,7 +17,7 @@ tasks:
     desc: Start frontend dev server
     dir: web
     cmds:
-      -  npm run dev
+      - npm run dev
 
   build:
     desc: Builds API + frontend (parallel)
@@ -40,12 +40,12 @@ tasks:
   test:api:
     dir: api
     cmds:
-      - dotnet test Api.Tests/Api.Tests.csproj
+      - dotnet test Api.Tests/Api.Tests.csproj --configuration Release --collect "XPlat Code Coverage"
 
   test:web:
     dir: web
     cmds:
-      - npm run test
+      - npm run test:coverage
 
   lint:
     desc: Lints frontend
@@ -54,7 +54,7 @@ tasks:
       - npm run lint
 
   ci:
-    desc: "Sequential: lint -> build -> test (matches CI pipeline order)"
+    desc: "Sequential: lint -> build -> test"
     cmds:
       - task: lint
       - task: build

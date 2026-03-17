@@ -63,7 +63,7 @@ fullstack-quality-gate-template/
 
 | Tool | Verify | Required for |
 | ---- | ------ | ------------ |
-| [.NET 8 SDK (global.json pins exact SDK version 8.0.404; install that version or update global.json)](https://dotnet.microsoft.com/download/dotnet/8.0) | `dotnet --version` | API (manual path) |
+| [.NET 8 SDK (SDK version is pinned in global.json; install that version or update global.json)](https://dotnet.microsoft.com/download/dotnet/8.0) | `dotnet --version` | API (manual path) |
 | [Node.js 20 (see .nvmrc)](https://nodejs.org/) | `node --version` | Frontend (manual path) |
 | [Docker Desktop](https://www.docker.com/products/docker-desktop/) | `docker --version` | Fast path |
 | [Task](https://taskfile.dev/installation/) (go-task) | `task --version` | Task commands *(optional)* |
