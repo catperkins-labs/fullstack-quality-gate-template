@@ -53,38 +53,15 @@ fullstack-quality-gate-template/
 
 ---
 
-## Quickstart
+## Local Development
 
 ### Prerequisites
 
-| Tool | Verify | Required for |
-| ---- | ------ | ------------ |
-| [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0) | `dotnet --version` | API (manual path) |
-| [Node.js 20+](https://nodejs.org/) | `node --version` | Frontend (manual path) |
-| [Docker Desktop](https://www.docker.com/products/docker-desktop/) | `docker --version` | Fast path |
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [Node.js 20+](https://nodejs.org/)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) *(optional)*
 
----
-
-### Fast path — Docker Compose *(recommended)*
-
-Spins up both services with a single command. No SDK or Node installation required.
-
-```bash
-git clone https://github.com/catperkins-labs/fullstack-quality-gate-template.git
-cd fullstack-quality-gate-template
-docker compose up --build
-```
-
-| Service | URL | Expected response |
-| ------- | --- | ----------------- |
-| API | http://localhost:5000/health | `{"status":"healthy"}` |
-| Web | http://localhost:3000 | React app |
-
----
-
-### Manual path — per service
-
-#### API
+### API
 
 ```bash
 cd api
@@ -92,16 +69,14 @@ dotnet run --project Api
 # → http://localhost:5000/health
 ```
 
-Run tests with coverage:
+Run tests:
 
 ```bash
-cd api/Api.Tests
+cd api
 dotnet test
 ```
 
-#### Frontend
-
-Install dependencies and start the dev server:
+### Frontend
 
 ```bash
 cd web
@@ -120,6 +95,14 @@ Lint:
 
 ```bash
 npm run lint
+```
+
+### Docker Compose (all-in-one)
+
+```bash
+docker-compose up --build
+# API  → http://localhost:5000/health
+# Web  → http://localhost:3000
 ```
 
 ---
