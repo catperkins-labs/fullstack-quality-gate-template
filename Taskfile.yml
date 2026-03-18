@@ -54,10 +54,16 @@ tasks:
       - npm run format:check
       - npm run lint
 
+  typecheck:web:
+    dir: web
+    cmds:
+      - npm run typecheck
+
   ci:
     desc: "Sequential: lint -> build -> test"
     cmds:
       - task: lint
+      - task: typecheck:web
       - task: build
       - task: test
 
