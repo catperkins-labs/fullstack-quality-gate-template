@@ -9,10 +9,7 @@ import { defineConfig } from 'eslint/config'
 export default defineConfig(
   { ignores: ['dist', 'coverage'] },
   {
-    extends: [
-      js.configs.recommended,
-      ...tseslint.configs.recommended,
-      prettier],
+    extends: [js.configs.recommended, ...tseslint.configs.recommended, prettier],
     files: ['**/*.{ts,tsx}'],
     languageOptions: {
       ecmaVersion: 2020,
