@@ -98,7 +98,8 @@ If you have [Task](https://taskfile.dev/installation/) installed, you can run ev
 | `task build` | Build API + frontend |
 | `task test` | Run all tests |
 | `task lint` | Lint frontend |
-| `task ci` | Full pipeline: lint → build → test |
+| `task typecheck:web` | Typecheck frontend |
+| `task ci` | Full pipeline: lint → typecheck:web → build → test |
 | `task docker` | `docker compose up --build` |
 
 ---
@@ -143,6 +144,12 @@ Lint:
 npm run lint
 ```
 
+Typecheck:
+
+```bash
+npm run typecheck
+```
+
 ---
 
 ## CI
@@ -152,7 +159,7 @@ The GitHub Actions workflow (`.github/workflows/ci.yml`) runs on every push and 
 | Job | Steps                                     |
 | --- | ----------------------------------------- |
 | api | `dotnet restore` → `build` → `test` (coverage collected via `coverlet`) |
-| web | `npm ci` → `lint` → `build` → `test:coverage` |
+| web | `npm ci` → `lint` → `typecheck` → `build` → `test:coverage` |
 
 Coverage reports are uploaded as workflow artifacts after each run.
 

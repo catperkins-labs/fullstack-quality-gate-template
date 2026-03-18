@@ -55,12 +55,13 @@ tasks:
       - npm run lint
 
   typecheck:web:
+    desc: Typecheck frontend
     dir: web
     cmds:
       - npm run typecheck
 
   ci:
-    desc: "Sequential: lint -> build -> test"
+    desc: "Sequential: lint -> typecheck:web -> build -> test"
     cmds:
       - task: lint
       - task: typecheck:web
