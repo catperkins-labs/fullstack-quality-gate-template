@@ -11,7 +11,8 @@
     "format:check": "prettier --check . --ignore-path ../.prettierignore",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "tsc -b"
   },
   "dependencies": {
     "react": "^18.3.1",
