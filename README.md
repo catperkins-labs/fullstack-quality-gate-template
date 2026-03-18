@@ -158,8 +158,8 @@ The GitHub Actions workflow (`.github/workflows/ci.yml`) runs on every push and 
 
 | Job | Steps                                     |
 | --- | ----------------------------------------- |
-| api | `dotnet restore` → `build` → `test` (coverage collected via `coverlet`) |
-| web | `npm ci` → `lint` → `typecheck` → `build` → `test:coverage` |
+| api | `dotnet restore` → `build` → `test --collect:"XPlat Code Coverage"` (uploads `coverage.cobertura.xml`) |
+| web | `npm ci` → `format:check` → `lint` → `typecheck` → `build` → `test:coverage` |
 
 Coverage reports are uploaded as workflow artifacts after each run.
 
