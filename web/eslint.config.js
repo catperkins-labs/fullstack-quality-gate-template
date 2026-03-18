@@ -4,9 +4,10 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import tseslint from 'typescript-eslint'
 import prettier from 'eslint-config-prettier'
+import { defineConfig } from 'eslint/config'
 
-export default tseslint.config(
-  { ignores: ['dist'] },
+export default defineConfig(
+  { ignores: ['dist', 'coverage'] },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended, prettier],
     files: ['**/*.{ts,tsx}'],
