@@ -155,6 +155,6 @@ Commit messages should follow the same Conventional Commits format as PR titles.
 All pull requests must pass CI before merging. The CI pipeline (`ci.yml`) runs:
 
 - **API:** restore → build → test (with coverage)
-- **Web:** lint → typecheck → build → test (with coverage)
+- **Web:** format:check → lint → typecheck → build → test (with coverage)
 
 Do not bypass required status checks. If CI is failing on `main`, address the failure before branching.
