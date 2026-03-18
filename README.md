@@ -154,7 +154,7 @@ npm run typecheck
 
 ## CI
 
-The GitHub Actions workflow (`.github/workflows/ci.yml`) runs on every push to `main` and on pull requests targeting `main` or `epic/**`:
+The GitHub Actions workflow (`.github/workflows/ci.yml`) runs on pushes to `epic/**` and `copilot/**` branches, and on pull requests targeting `main`:
 
 | Job | Steps                                     |
 | --- | ----------------------------------------- |
