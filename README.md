@@ -97,8 +97,9 @@ If you have [Task](https://taskfile.dev/installation/) installed, you can run ev
 | `task dev` | Start API + frontend dev servers in parallel |
 | `task build` | Build API + frontend |
 | `task test` | Run all tests |
-| `task lint` | Lint frontend |
-| `task ci` | Full pipeline: lint → build → test |
+| `task lint` | Format-check + lint frontend |
+| `task typecheck:web` | Typecheck frontend |
+| `task ci` | Full pipeline: format:check → lint → typecheck:web → build → test |
 | `task docker` | `docker compose up --build` |
 
 ---
@@ -143,16 +144,22 @@ Lint:
 npm run lint
 ```
 
+Typecheck:
+
+```bash
+npm run typecheck
+```
+
 ---
 
 ## CI
 
-The GitHub Actions workflow (`.github/workflows/ci.yml`) runs on every push and pull request to `main`:
+The GitHub Actions workflow (`.github/workflows/ci.yml`) runs on pushes to `epic/**` and `copilot/**` branches, and on pull requests targeting `main`:
 
 | Job | Steps                                     |
 | --- | ----------------------------------------- |
-| api | `dotnet restore` → `build` → `test` (coverage collected via `coverlet`) |
-| web | `npm ci` → `lint` → `build` → `test:coverage` |
+| api | `dotnet restore` → `build` → `test --collect:"XPlat Code Coverage"` (uploads `coverage.cobertura.xml`) |
+| web | `npm ci` → `format:check` → `lint` → `typecheck` → `build` → `test:coverage` |
 
 Coverage reports are uploaded as workflow artifacts after each run.
 

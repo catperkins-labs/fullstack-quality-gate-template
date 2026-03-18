@@ -11,17 +11,12 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'lcov'],
-      exclude: [
-        'src/main.tsx',
-        'eslint.config.js',
-        'vite.config.ts',
-        'dist/**',
-      ],
+      exclude: ['src/main.tsx', 'eslint.config.js', 'vite.config.ts', 'dist/**', 'coverage/**'],
       thresholds: {
-        lines: 70,
-        functions: 70,
-        branches: 70,
-        statements: 70,
+        lines: 80,
+        functions: 80,
+        branches: 80,
+        statements: 80,
       },
     },
   },

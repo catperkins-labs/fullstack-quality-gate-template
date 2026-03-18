@@ -92,8 +92,14 @@ Complete the following before marking a pull request as ready for review:
    If Task is not installed, run the equivalent commands manually (including coverage):
 
    ```bash
+   # Format
+   cd web && npm run format:check
+
    # Lint
    cd web && npm run lint
+
+   # Typecheck
+   cd web && npm run typecheck
 
    # Build
    dotnet build api/Api/Api.csproj --configuration Release
@@ -149,6 +155,6 @@ Commit messages should follow the same Conventional Commits format as PR titles.
 All pull requests must pass CI before merging. The CI pipeline (`ci.yml`) runs:
 
 - **API:** restore → build → test (with coverage)
-- **Web:** lint → build → test (with coverage)
+- **Web:** format:check → lint → typecheck → build → test (with coverage)
 
 Do not bypass required status checks. If CI is failing on `main`, address the failure before branching.

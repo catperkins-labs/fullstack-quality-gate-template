@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, "copilot/**"]
+    branches: ["copilot/**", "epic/**"]
   pull_request:
     branches: [main]
 
@@ -43,7 +43,7 @@ jobs:
           path: api/TestResults/**/coverage.cobertura.xml
 
   web:
-    name: Web — lint, build & test
+    name: Web — format:check, lint, typecheck, build, test & coverage
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -64,8 +64,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check formatting
+        run: npm run format:check
+
       - name: Lint
         run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
 
       - name: Build
         run: npm run build
