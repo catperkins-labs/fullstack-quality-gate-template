@@ -158,7 +158,7 @@ The GitHub Actions workflow (`.github/workflows/ci.yml`) runs on pushes to `epic
 
 | Job | Steps                                     |
 | --- | ----------------------------------------- |
-| api | `dotnet restore` → `build` → `test --collect:"XPlat Code Coverage"` (uploads `coverage.cobertura.xml`) |
+| api | `dotnet restore` → `format:check` → `build` → `test --collect:"XPlat Code Coverage"` (uploads `coverage.cobertura.xml`) |
 | web | `npm ci` → `format:check` → `lint` → `typecheck` → `build` → `test:coverage` |
 
 Coverage reports are uploaded as workflow artifacts after each run.

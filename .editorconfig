@@ -11,5 +11,21 @@ trim_trailing_whitespace = true
 [*.{cs,csproj,sln}]
 indent_size = 4
 
+[*.cs]
+# using directive ordering — system usings first, then alphabetical
+dotnet_sort_system_directives_first = true
+dotnet_separate_import_directive_groups = false
+
+# var preferences — use var when type is apparent
+csharp_style_var_for_built_in_types = false:suggestion
+csharp_style_var_when_type_is_apparent = true:suggestion
+csharp_style_var_elsewhere = false:suggestion
+
+# avoid unnecessary this. qualifier
+dotnet_style_qualification_for_field = false:warning
+dotnet_style_qualification_for_property = false:warning
+dotnet_style_qualification_for_method = false:warning
+dotnet_style_qualification_for_event = false:warning
+
 [*.md]
 trim_trailing_whitespace = false

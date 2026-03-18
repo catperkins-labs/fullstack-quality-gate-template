@@ -33,6 +33,12 @@ tasks:
     cmds:
       - npm run build
 
+  format:check:api:
+    desc: Runs dotnet format on API
+    dir: api
+    cmds:
+      - dotnet format Api.sln --verify-no-changes
+
   test:
     desc: Runs API + frontend tests (parallel)
     deps: [test:api, test:web]
@@ -61,10 +67,11 @@ tasks:
       - npm run typecheck
 
   ci:
-    desc: "Sequential: lint -> typecheck:web -> build -> test"
+    desc: "Sequential: lint -> typecheck:web -> format:check:api -> build -> test"
     cmds:
       - task: lint
       - task: typecheck:web
+      - task: format:check:api
       - task: build
       - task: test
 

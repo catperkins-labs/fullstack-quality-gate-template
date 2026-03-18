@@ -101,6 +101,9 @@ Complete the following before marking a pull request as ready for review:
    # Typecheck
    cd web && npm run typecheck
 
+   # DotNet Format
+   cd api && dotnet format Api.sln --verify-no-changes
+
    # Build
    dotnet build api/Api/Api.csproj --configuration Release
    cd web && npm run build
