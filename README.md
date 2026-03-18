@@ -97,9 +97,9 @@ If you have [Task](https://taskfile.dev/installation/) installed, you can run ev
 | `task dev` | Start API + frontend dev servers in parallel |
 | `task build` | Build API + frontend |
 | `task test` | Run all tests |
-| `task lint` | Lint frontend |
+| `task lint` | Format-check + lint frontend |
 | `task typecheck:web` | Typecheck frontend |
-| `task ci` | Full pipeline: lint → typecheck:web → build → test |
+| `task ci` | Full pipeline: format:check → lint → typecheck:web → build → test |
 | `task docker` | `docker compose up --build` |
 
 ---
@@ -154,7 +154,7 @@ npm run typecheck
 
 ## CI
 
-The GitHub Actions workflow (`.github/workflows/ci.yml`) runs on every push and pull request to `main`:
+The GitHub Actions workflow (`.github/workflows/ci.yml`) runs on every push to `main` and on pull requests targeting `main` or `epic/**`:
 
 | Job | Steps                                     |
 | --- | ----------------------------------------- |

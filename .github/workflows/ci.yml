@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main, "copilot/**"]
+    branches: [main, "copilot/**", "epic/**"]
   pull_request:
-    branches: [main, "epic/**"]
+    branches: [main]
 
 jobs:
   api:
