@@ -92,8 +92,14 @@ Complete the following before marking a pull request as ready for review:
    If Task is not installed, run the equivalent commands manually (including coverage):
 
    ```bash
+   # Format
+   cd web && npm run format:check
+
    # Lint
    cd web && npm run lint
+
+   # Typecheck
+   cd web && npm run typecheck
 
    # Build
    dotnet build api/Api/Api.csproj --configuration Release

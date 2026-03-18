@@ -43,7 +43,7 @@ jobs:
           path: api/TestResults/**/coverage.cobertura.xml
 
   web:
-    name: Web — lint, build & test
+    name: Web — format:check, lint, typecheck, build, test & coverage
     runs-on: ubuntu-latest
     permissions:
       contents: read
