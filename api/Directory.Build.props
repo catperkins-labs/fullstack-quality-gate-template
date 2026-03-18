@@ -1,0 +1,11 @@
+<Project>
+  <PropertyGroup>
+    <!-- Enforce code style rules during dotnet build (not just in the IDE) -->
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <!-- Run all .NET analyzer rules at the latest level -->
+    <AnalysisLevel>latest</AnalysisLevel>
+    <AnalysisMode>All</AnalysisMode>
+    <!-- Treat all warnings (including analyzer diagnostics) as errors -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+</Project>

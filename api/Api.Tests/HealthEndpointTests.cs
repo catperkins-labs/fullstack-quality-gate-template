@@ -15,7 +15,7 @@ public class HealthEndpointTests : IClassFixture<WebApplicationFactory<Program>>
     public async Task GetHealth_ReturnsOk()
     {
         var client = _factory.CreateClient();
-        var response = await client.GetAsync("/health");
+        var response = await client.GetAsync(new Uri("/health", UriKind.Relative)).ConfigureAwait(true);
         response.EnsureSuccessStatusCode();
     }
 
@@ -23,8 +23,8 @@ public class HealthEndpointTests : IClassFixture<WebApplicationFactory<Program>>
     public async Task GetHealth_ReturnsHealthyStatus()
     {
         var client = _factory.CreateClient();
-        var response = await client.GetAsync("/health");
-        var body = await response.Content.ReadAsStringAsync();
-        Assert.Contains("healthy", body);
+        var response = await client.GetAsync(new Uri("/health", UriKind.Relative)).ConfigureAwait(true);
+        var body = await response.Content.ReadAsStringAsync().ConfigureAwait(true);
+        Assert.Contains("healthy", body, StringComparison.OrdinalIgnoreCase);
     }
 }
